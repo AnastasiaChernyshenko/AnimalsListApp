@@ -14,6 +14,14 @@ struct Animal: Identifiable, Decodable, Equatable {
     let description: String
     let status: AnimalPaidStatus?
     var content: [AnimalContent]?
+    
+    var isPremium: Bool {
+        status == .paid
+    }
+    
+    var isComingSoon: Bool {
+        status == nil
+    }
 }
 
 enum AnimalPaidStatus: String, Codable, Equatable {

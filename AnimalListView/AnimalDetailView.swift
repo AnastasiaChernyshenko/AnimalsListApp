@@ -11,44 +11,44 @@ import ComposableArchitecture
 struct AnimalDetailView: View {
     
     let animal: Animal
+    
     @State private var selectedIndex = 0
 
     var body: some View {
-        VStack {
-            if let animalFacts = animal.content, !animalFacts.isEmpty {
-                ZStack {
-                    TabView(selection: $selectedIndex) {
-                        ForEach(0..<animalFacts.count) { index in
-                            VStack {
-                                AsyncImage(url: URL(string: animalFacts[index].image)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .frame(height: 200)
-                                Text(animalFacts[index].fact)
-                                    .padding()
-                                Spacer()
-                            }.tag(index)
-                        }}
+        ZStack {
+            convertUIColor(uiColor: .background)
+                .ignoresSafeArea()
+            VStack {
+                if let animalFacts = animal.content, !animalFacts.isEmpty {
                     VStack {
-                        Spacer()
-                        HStack {
-                            if selectedIndex > 0 {
-                                previousFactButton
-                            }
+                        TabView(selection: $selectedIndex) {
+                            ForEach(0..<animalFacts.count) { index in
+                                VStack {
+                                    AsyncImage(url: URL(string: animalFacts[index].image)) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(height: 200)
+                                    Text(animalFacts[index].fact)
+                                        .padding()
+                                    Spacer()
+                                }.tag(index)
+                            }}
                             Spacer()
-                            if selectedIndex < animalFacts.count - 1 {
+                            HStack {
+                                previousFactButton
+                                Spacer()
                                 nextFactButton
                             }
-                        }
-                    }
-                }.frame(width: 300, height: 500)
-                    .tabViewStyle(PageTabViewStyle())
-                    .background(.gray)
-                    .cornerRadius(15)
-            } else {
-                noFactsText
+                    }.frame(width: 300, height: 500)
+                        .tabViewStyle(PageTabViewStyle())
+                        .background(.white)
+                        .cornerRadius(8)
+                        .shadow(color: .gray, radius: 5)
+                } else {
+                    noFactsText
+                }
             }
         }
         .navigationTitle(animal.title)
@@ -64,20 +64,35 @@ private extension AnimalDetailView {
     
     var previousFactButton: some View {
         Button(action: {
-            selectedIndex -= 1
+            isFirstFactPresent() ? selectLastFact() : (selectedIndex -= 1)
         }, label: {
-            Image(systemName: "arrow.left")
+            Image("back")
 
-        })
-        .actionButtonStyle()
+        }).padding()
     }
     
     var nextFactButton: some View {
         Button(action: {
-            selectedIndex += 1
+            isLastFactPresent() ? selectFirstFact() : (selectedIndex += 1)
         }, label: {
-                Image(systemName: "arrow.right")
-        })
-        .actionButtonStyle()
+                Image("next")
+        }).padding()
+    }
+    
+    private func isFirstFactPresent() -> Bool {
+        selectedIndex == 0
+    }
+    
+    private func isLastFactPresent() -> Bool {
+        selectedIndex == (animal.content?.count ?? 0 - 1)
+    }
+    
+    private func selectLastFact() {
+        guard let count = animal.content?.count else { return }
+        selectedIndex = count - 1
+    }
+    
+    private func selectFirstFact() {
+        selectedIndex = 0
     }
 }

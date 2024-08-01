@@ -15,29 +15,32 @@ struct AnimalListView: View {
         NavigationStackStore(self.store.scope(state: \.path, action: { .path($0) })) {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
                 NavigationView {
-                    List{
+                    List {
                         ForEach(viewStore.animals) { animal in
-                            switch animal.status {
-                            case .free, .paid:
-                                NavigationLink(state: AnimalListReducer.Path.State.animalFacts(.init(animal: animal, hasAdd: animal.status == .paid)))  {
-                                    AnimalCell(animal: animal)
-                                }.buttonStyle(.borderless)
-                            default:
-                                NavigationLink(state: AnimalListReducer.Path.State.comingSoon(.init()))  {
-                                    AnimalCell(animal: animal)
-                                }.buttonStyle(.borderless)
+                            ZStack {
+                                if !animal.isComingSoon {
+                                    NavigationLink(state: AnimalListReducer.Path.State.animalFacts(.init(animal: animal, hasAdd: animal.status == .paid))) {
+                                        EmptyView()
+                                    }.opacity(0)
+                                } else {   
+                                    NavigationLink(state: AnimalListReducer.Path.State.comingSoon(.init())) {
+                                        EmptyView()
+                                    } .opacity(0)
+                                }
+                                AnimalCell(animal: animal)
                             }
+                        }.listRowBackgroundStyle()
+                    }.listBackgroundStyle()
+                        .refreshable {
+                            viewStore.send(.fetchAnimals)
                         }
-                    }
-                    .refreshable {
-                        viewStore.send(.fetchAnimals)
-                    }
-                    .navigationTitle("Animals")
-                    .onAppear {
-                        viewStore.send(.fetchAnimals)
-                    }
+                        .navigationTitle("Animals")
+                        .onAppear {
+                            viewStore.send(.fetchAnimals)
+                        }
                 }
             }
+       
         } destination: { store in
             switch store {
             case .animalFacts:
@@ -53,6 +56,6 @@ struct AnimalListView: View {
                      then: ComingSoonView.init(store:)
                 )
             }
-        }
+        }.customBackgroundStyle()
     }
 }

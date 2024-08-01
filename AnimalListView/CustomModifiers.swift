@@ -7,19 +7,45 @@
 
 import SwiftUI
 
-struct ActionButtonModifier: ViewModifier {
+struct ListBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .accentColor(.blue)
-            .frame(width: 40, height: 40)
-            .background(.white,
-                  in: RoundedRectangle(cornerRadius: 12))
-            .padding()
+            .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .customBackgroundStyle()
     }
 }
 
 extension View {
-    func actionButtonStyle() -> some View {
-        modifier(ActionButtonModifier())
+    func listBackgroundStyle() -> some View {
+        modifier(ListBackgroundModifier())
+    }
+}
+
+
+struct ListRowBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
+    }
+}
+
+extension View {
+    func listRowBackgroundStyle() -> some View {
+        modifier(ListRowBackgroundModifier())
+    }
+}
+
+struct CustomBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(content.convertUIColor(uiColor: .background))
+    }
+}
+
+extension View {
+    func customBackgroundStyle() -> some View {
+        modifier(CustomBackgroundModifier())
     }
 }

@@ -11,13 +11,32 @@ struct AnimalCell: View {
     let animal: Animal
     
     var body: some View {
-        HStack {
-            image
-            VStack(alignment: .leading) {
-                titleText
-                descriptionText
-                Spacer()
-                subscriptionText
+        ZStack {
+            Color.white
+                .cornerRadius(8)
+                .shadow(color: .gray, radius: 5)
+            HStack {
+                image
+                Spacer(minLength: 20)
+                ZStack {
+                    VStack(alignment: .leading) {
+                        titleText
+                        descriptionText
+                        Spacer()
+                        if animal.isPremium {
+                        premiumBlock
+                        }
+                    }
+                    if animal.isComingSoon {
+                        comingSoonBlock
+                    }
+                }
+            }.padding()
+            
+            if animal.isComingSoon {
+                Color.black
+                    .cornerRadius(8)
+                    .opacity(0.5)
             }
         }
     }
@@ -36,6 +55,21 @@ private extension AnimalCell {
         }
     }
     
+    var comingSoomImage: some View {
+        Image("coming_soon_icon")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 80, height: 80)
+    }
+    
+    var lockImage: some View {
+        Image("lock_icon")
+            .resizable()
+            .scaledToFit()
+            .foregroundColor(convertUIColor(uiColor: .premium))
+            .frame(width: 12, height: 12)
+    }
+    
     var titleText: some View {
         Text(animal.title)
             .font(.headline)
@@ -49,7 +83,22 @@ private extension AnimalCell {
     var subscriptionText: some View {
         Text(animal.status?.title ?? "Coming Soon")
             .font(.subheadline)
-            .foregroundColor(.accentColor)
+            .foregroundColor(convertUIColor(uiColor: .premium))
+    }
+    
+    var premiumBlock: some View {
+        HStack {
+            lockImage
+            subscriptionText
+            Spacer()
+        }
+    }
+    
+    var comingSoonBlock: some View {
+        HStack {
+            Spacer()
+            comingSoomImage
+        }
     }
 }
 

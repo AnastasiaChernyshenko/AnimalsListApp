@@ -10,6 +10,7 @@
 		5D0B20A82C5A8EE600B2A184 /* AnimalFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B20A72C5A8EE600B2A184 /* AnimalFacts.swift */; };
 		5D0B20AA2C5A8F0600B2A184 /* ComingSoonDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B20A92C5A8F0600B2A184 /* ComingSoonDomain.swift */; };
 		5D0B20AC2C5A953100B2A184 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B20AB2C5A953100B2A184 /* CustomModifiers.swift */; };
+		5D49BB002C5B8A93001DD67B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D49BAFF2C5B8A93001DD67B /* AddView.swift */; };
 		5D8CE1B72C5A3CAE00B64E29 /* AnimalListViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CE1B62C5A3CAE00B64E29 /* AnimalListViewApp.swift */; };
 		5D8CE1BB2C5A3CAF00B64E29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D8CE1BA2C5A3CAF00B64E29 /* Assets.xcassets */; };
 		5D8CE1BE2C5A3CAF00B64E29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D8CE1BD2C5A3CAF00B64E29 /* Preview Assets.xcassets */; };
@@ -19,12 +20,14 @@
 		5D8CE1CE2C5A3E3E00B64E29 /* AnimalListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CE1CD2C5A3E3E00B64E29 /* AnimalListReducer.swift */; };
 		5D8CE1D02C5A3EFD00B64E29 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CE1CF2C5A3EFD00B64E29 /* AnimalDetailView.swift */; };
 		5D8CE1D22C5A5A1800B64E29 /* AnimalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CE1D12C5A5A1800B64E29 /* AnimalCell.swift */; };
+		5DA7D7FD2C5B76C700917AC6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7D7FC2C5B76C700917AC6 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D0B20A72C5A8EE600B2A184 /* AnimalFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFacts.swift; sourceTree = "<group>"; };
 		5D0B20A92C5A8F0600B2A184 /* ComingSoonDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonDomain.swift; sourceTree = "<group>"; };
 		5D0B20AB2C5A953100B2A184 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
+		5D49BAFF2C5B8A93001DD67B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		5D8CE1B32C5A3CAE00B64E29 /* AnimalListView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalListView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8CE1B62C5A3CAE00B64E29 /* AnimalListViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListViewApp.swift; sourceTree = "<group>"; };
 		5D8CE1BA2C5A3CAF00B64E29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		5D8CE1CD2C5A3E3E00B64E29 /* AnimalListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListReducer.swift; sourceTree = "<group>"; };
 		5D8CE1CF2C5A3EFD00B64E29 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
 		5D8CE1D12C5A5A1800B64E29 /* AnimalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCell.swift; sourceTree = "<group>"; };
+		5DA7D7FC2C5B76C700917AC6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				5D8CE1D12C5A5A1800B64E29 /* AnimalCell.swift */,
 				5D0B20A72C5A8EE600B2A184 /* AnimalFacts.swift */,
 				5D0B20AB2C5A953100B2A184 /* CustomModifiers.swift */,
+				5D49BAFF2C5B8A93001DD67B /* AddView.swift */,
+				5DA7D7FC2C5B76C700917AC6 /* Extensions.swift */,
 				5D8CE1BA2C5A3CAF00B64E29 /* Assets.xcassets */,
 				5D8CE1BC2C5A3CAF00B64E29 /* Preview Content */,
 			);
@@ -171,6 +177,8 @@
 				5D8CE1D02C5A3EFD00B64E29 /* AnimalDetailView.swift in Sources */,
 				5D8CE1CC2C5A3E0500B64E29 /* AnimalListView.swift in Sources */,
 				5D0B20A82C5A8EE600B2A184 /* AnimalFacts.swift in Sources */,
+				5DA7D7FD2C5B76C700917AC6 /* Extensions.swift in Sources */,
+				5D49BB002C5B8A93001DD67B /* AddView.swift in Sources */,
 				5D0B20AA2C5A8F0600B2A184 /* ComingSoonDomain.swift in Sources */,
 				5D0B20AC2C5A953100B2A184 /* CustomModifiers.swift in Sources */,
 				5D8CE1CA2C5A3DD800B64E29 /* Animal.swift in Sources */,

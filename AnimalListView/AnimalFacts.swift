@@ -35,7 +35,7 @@ struct AnimalFactsView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             if viewStore.hasAdd {
-                ProgressView().onAppear {
+                AddView().onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         viewStore.send(.hideAdd)
                     }
